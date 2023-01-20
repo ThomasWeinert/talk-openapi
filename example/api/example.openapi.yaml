@@ -2,20 +2,32 @@ openapi: 3.0.0
 info:
   title: Example API
   version: 1.0.0
+  contact:
+    name: dimensional
+    url: https://www.dimensional.de
+    email: info@dimensional.de
+  description: >
+    Example project for the OpenAPI talk
 servers:
   - url: 'https://example.tld/ingest/v1'
+tags:
+  - name: Books
 paths:
   /books:
     get:
       description: Fetch a list of books.
       operationId: getBooks
+      tags:
+        - Books
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Books'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
         '400':
           $ref: '#/components/responses/BadRequestError'
 components:
@@ -85,7 +97,3 @@ components:
       required:
         - id
         - title
-    Books:
-      type: array
-      items:
-        $ref: '#/components/schemas/Book'
