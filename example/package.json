@@ -1,6 +1,4 @@
 {
-  "name": "@hms/example-api-documentation",
-  "version": "0.0.0",
   "license": "UNLICENCED",
   "private": true,
   "scripts": {
@@ -42,8 +40,5 @@
   },
   "dependencies": {
     "redoc": "^2.0.0-rc.74"
-  },
-  "publishConfig": {
-    "registry": "https://npm.dimensional-server.de/"
   }
 }

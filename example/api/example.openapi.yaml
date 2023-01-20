@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: Example API
+  version: 1.0.0
+servers:
+  - url: 'https://example.tld/ingest/v1'
+paths:
+  /books:
+    get:
+      description: Fetch a list of books.
+      operationId: getBooks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+components:
+  responses:
+    BadRequestError:
+      description: Request path oder body are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          example:
+            identifier: "BadRequest"
+            message: "Invalid request path or data."
+    NotFoundError:
+      description: Resource could not be found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          example:
+            identifier: "NotFound"
+            message: "Resource not available"
+    ForbiddenError:
+      description: Resource access forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          example:
+            identifier: "Forbidden"
+            message: "Resource access forbidden"
+  schemas:
+    ApiErrorIdentifier:
+      type: string
+      description: "Predefined generic error identifiers"
+      enum:
+        - ApiUnreachable
+        - Unauthorized
+        - AuthenticationFailure
+        - BadRequest
+        - NotFound
+        - UnsupportedMediaType
+        - UploadFailure
+        - Forbidden
+    ApiError:
+      type: object
+      properties:
+        identifier:
+          $ref: '#/components/schemas/ApiErrorIdentifier'
+        message:
+          type: string
+        context:
+          type: object
+          description: A list of named placeholder values
+      required:
+        - identifier
+        - message
+    BookID:
+      type: string
+    Book:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/BookID'
+        title:
+          type: string
+      required:
+        - id
+        - title
+    Books:
+      type: array
+      items:
+        $ref: '#/components/schemas/Book'
