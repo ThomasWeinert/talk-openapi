@@ -1,5 +1,5 @@
 {
-  "name": "@qvest-media/dk-polices-ingest-api-documentation",
+  "name": "@hms/example-api-documentation",
   "version": "0.0.0",
   "license": "UNLICENCED",
   "private": true,
@@ -10,17 +10,13 @@
     "build:prepare": "run-script-os",
     "build:prepare:default": "mkdir -p build/api-doc || mkdir -p build/angular",
     "build:prepare:win32": "if not exist build\\api-doc md build\\api-doc && if not exist build\\angular md build\\angular",
-    "build:angular": "npm run build:prepare && run-p build:angular:* && npm run compile:angular",
-    "build:angular:ingest": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i openapi/ingest.openapi.yaml -g typescript-angular -o build/angular/ingest -c openapi/ingest.angular.config.json",
-    "build:spring": "npm run build:prepare && run-p build:spring:*:*",
-    "build:spring:ingest:swagger": "java -jar tools/swagger-codegen-cli-3.0.35.jar generate -i openapi/ingest.openapi.yaml -l spring --config openapi/ingest.spring.config.json -o build/spring-swagger/ingest",
-    "build:spring:ingest:openapi": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i openapi/ingest.openapi.yaml -g spring --config openapi/ingest.spring.config.json -o build/spring-openapi/ingest",
+    "build:angular": "npm run build:prepare && run-p build:angular:* && npm run compile:angular:*",
+    "build:angular:example": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i openapi/example.openapi.yaml -g typescript-angular -o build/angular/example -c openapi/example.angular.config.json",
     "build:docs": "run-script-os && node tools/build.docs.js",
     "build:docs:win32": "(robocopy openapi build\\api-doc\\openapi /E /PURGE /NJH /NJS) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
     "build:docs:default": "mkdir -p build/api-doc/openapi && cp -R openapi/* build/api-doc/openapi/",
-    "compile:angular": "ng-packagr -p build/angular/ingest/ng-package.json && npm run package:angular",
-    "package:angular": "tar -C ./build/angular/ingest/dist -czvf ../node_packages/@qvest-media/ingest-api.tgz ./*",
-    "help:spring:swagger": "java -jar tools/swagger-codegen-cli-3.0.35.jar config-help -l spring"
+    "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json && npm run package:angular",
+    "package:angular:example": "tar -C ./build/angular/example/dist -czvf ./node_packages/@hms/example-angular.tgz ./*"
   },
   "author": {
     "name": "dimensional GmbH",
