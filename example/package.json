@@ -1,0 +1,53 @@
+{
+  "name": "@qvest-media/dk-polices-ingest-api-documentation",
+  "version": "0.0.0",
+  "license": "UNLICENCED",
+  "private": true,
+  "scripts": {
+    "test": "spectral lint -v ./openapi/**/*.{openapi,swagger}.{json,yml,yaml}",
+    "clean": "rimraf build/api-doc && rimraf build/angular && rimraf build/docs && rimraf build/spring-swagger && rimraf build/spring-openapi",
+    "build": "npm run clean && run-p build:angular build:spring build:docs",
+    "build:prepare": "run-script-os",
+    "build:prepare:default": "mkdir -p build/api-doc || mkdir -p build/angular",
+    "build:prepare:win32": "if not exist build\\api-doc md build\\api-doc && if not exist build\\angular md build\\angular",
+    "build:angular": "npm run build:prepare && run-p build:angular:* && npm run compile:angular",
+    "build:angular:ingest": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i openapi/ingest.openapi.yaml -g typescript-angular -o build/angular/ingest -c openapi/ingest.angular.config.json",
+    "build:spring": "npm run build:prepare && run-p build:spring:*:*",
+    "build:spring:ingest:swagger": "java -jar tools/swagger-codegen-cli-3.0.35.jar generate -i openapi/ingest.openapi.yaml -l spring --config openapi/ingest.spring.config.json -o build/spring-swagger/ingest",
+    "build:spring:ingest:openapi": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i openapi/ingest.openapi.yaml -g spring --config openapi/ingest.spring.config.json -o build/spring-openapi/ingest",
+    "build:docs": "run-script-os && node tools/build.docs.js",
+    "build:docs:win32": "(robocopy openapi build\\api-doc\\openapi /E /PURGE /NJH /NJS) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
+    "build:docs:default": "mkdir -p build/api-doc/openapi && cp -R openapi/* build/api-doc/openapi/",
+    "compile:angular": "ng-packagr -p build/angular/ingest/ng-package.json && npm run package:angular",
+    "package:angular": "tar -C ./build/angular/ingest/dist -czvf ../node_packages/@qvest-media/ingest-api.tgz ./*",
+    "help:spring:swagger": "java -jar tools/swagger-codegen-cli-3.0.35.jar config-help -l spring"
+  },
+  "author": {
+    "name": "dimensional GmbH",
+    "email": "info@dimensional.de",
+    "url": "https://dimensional.de"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "run-script-os": "^1.1.6",
+    "@angular/common": "^14.1.1",
+    "@angular/compiler": "^14.1.1",
+    "@angular/compiler-cli": "^14.1.1",
+    "@angular/core": "^14.1.1",
+    "@angular/platform-browser": "^14.1.1",
+    "@stoplight/spectral-cli": "^6.5.0",
+    "ng-packagr": "^14.1.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.6",
+    "tsickle": "^0.46.3",
+    "typescript": "~4.7.4",
+    "zone.js": "^0.11.7"
+  },
+  "dependencies": {
+    "redoc": "^2.0.0-rc.74"
+  },
+  "publishConfig": {
+    "registry": "https://npm.dimensional-server.de/"
+  }
+}

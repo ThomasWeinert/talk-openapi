@@ -1,0 +1,16 @@
+{
+  "apiPackage" : "api",
+  "npmName": "@hms/example-api",
+  "npmVersion": "1.0.0",
+  "npmRepository": "https://npm.dimensional-server.de/",
+  "ngVersion": "13",
+  "sortParamsByRequiredFlag": true,
+  "withInterfaces": false,
+  "generateAliasAsModel": true,
+  "providedInRoot": true,
+  "apiModulePrefix": "Ingest",
+  "serviceSuffix": "ApiService",
+  "fileNaming": "kebab-case",
+  "nullSafeAdditionalProps": true,
+  "stringEnums": true
+}

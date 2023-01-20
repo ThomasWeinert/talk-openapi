@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>GIT</title>
+
+    <meta name="author" content="Thomas Weinert">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:website" content="@ThomasWeinert" />
+    <meta property="og:url" content="https://thomas.weinert.info/talk-openapi/" />
+    <meta property="og:title" content="Talk: OpenAPI" />
+    <meta property="og:description" content="A talk about using OpenAPI as a lead concept in the development process" />
+    <meta property="og:image" content="https://thomas.weinert.info/talk-openapi/images/???" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/black.css" id="theme">
+
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/highlight.js/styles/idea.css">
+
+    <style type="text/css">
+      @media print {
+        body.print-pdf .slide-menu-button {
+          display: none;
+        }
+      }
+      .hljs-tag {
+        background-color: transparent;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+      body > div.reveal {
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255,255,255,0.1) 0%,
+          rgba(255,255,255,0.15) 50%,
+          rgba(255,255,255,0) 100%
+        );
+      }
+      ul.code {
+        font-family: monospace;
+      }
+
+      .reveal section ul li code,
+      .reveal code {
+        font-family: "Source Code Pro", monospace;
+      }
+      .reveal code .placeholder {
+        opacity: 0.65;
+      }
+      .reveal section img.scribble {
+        border: 1px solid silver;
+        background: white;
+        padding: 10px;
+        max-height: 500px;
+      }
+      .reveal section img.borderless {
+        border: none;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="reveal" data-video="small top-right">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <section>
+            <h1>OpenAPI</h1>
+            <p>
+              <small>@ThomasWeinert</small>
+              <small>@thw@phpc.social</small>
+            </p>
+          </section>
+          <section>
+            <h2>About Me</h2>
+            <div style="display: flex; align-items: center; justify-content: space-around;">
+              <ul>
+                <li><a href="http://www.dimensional.de">dimensional GmbH</a></li>
+                <li>Application Developer</li>
+                <li>PHP >= 20 years</li>
+                <li>XML Fanatic</li>
+                <li>Brompton Rider</li>
+              </ul>
+              <div>
+                <img src="images/office.jpg" style="max-height: 500px"/>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>TOC</h2>
+            <div style="display: flex; align-items: center; justify-content: space-around;">
+              <ul>
+                <li>About OpenApi</li>
+                <li>Example</li>
+                <li>Documentation</li>
+                <li>Validation</li>
+                <li>Code Generator</li>
+                <li>GitLab</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>About OpenAPI</h2>
+            <ul>
+              <li>Swagger</li>
+              <li>Current Version: OpenApi 3.1</li>
+            </ul>
+          </section>
+          <section>
+            <h3>JSON vs YAML</h3>
+          </section>
+          <section>
+            <h3>IDE Integration</h3>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Example</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Documentation</h2>
+          </section>
+
+          <section>
+            <h3>Redoc</h3>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Validation</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Code Generator</h2>
+          </section>
+          <section>
+            <h2>OpenApi Generator</h2>
+            <ul>
+              <li>Java</li>
+              <li>API clients</li>
+              <li>Server stubs</li>
+              <li>Documentation generators</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Links</h2>
+            <ul>
+              <li>
+                <a href="https://www.openapis.org/">https://www.openapis.org/</a>
+              </li>
+              <li>
+                <a href="https://github.com/OpenAPITools/openapi-generator">https://github.com/OpenAPITools/openapi-generator</a>
+              </li>
+              <li>
+                <a href="https://stoplight.io/open-source/spectral">https://stoplight.io/open-source/spectral</a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img src="images/thanks.png" class="borderless"/>
+          </section>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: "c/t",
+
+        //showNotes: isPrintView ? true /*"separate-page" */ : false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        //parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js-menu/menu.js' },
+          { src: 'bower_components/reveal-badges/src/badges.js' },
+          { src: 'bower_components/reveal-presenter-keys/src/presenter-keys.js' },
+          { src: 'bower_components/reveal-print/src/print.js' },
+          { src: 'bower_components/reveal-sampler/sampler.js' },
+
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ],
+
+        menu: {
+          side: 'left',
+          markers: true,
+          numbers: false,
+          themes: [
+            { name: 'Black', theme: 'bower_components/reveal.js/css/theme/black.css' },
+            { name: 'White', theme: 'bower_components/reveal.js/css/theme/white.css' }
+          ]
+        },
+
+        badges: {
+          languages : false
+        },
+
+        presenter: {
+          profile: 'Lenovo Yoga Mouse'
+        },
+
+        sampler: {
+          proxyURL: document.location.href.match(/http:\/\/localhost/) ? 'task.php?file=' : '',
+          removeIndentation: true,
+          lineNumbers: 'original'
+        }
+
+      });
+
+    </script>
+
+  </body>
+</html>
