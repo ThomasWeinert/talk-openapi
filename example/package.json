@@ -11,7 +11,7 @@
     "build:docs": "run-script-os && node tools/build.docs.js",
     "build:docs:win32": "(robocopy api build\\api-doc\\api /E /PURGE /NJH /NJS) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
     "build:docs:default": "mkdirp build/api-doc/api && cp -R api/* build/api-doc/api/",
-    "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json && npm run package:angular:example",
+    "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json",
     "package:angular:example": "tar -C ./build/angular/example/dist -czvf ./build/node_packages/example-angular.tgz ./*"
   },
   "author": {

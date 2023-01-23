@@ -273,12 +273,12 @@ rules:
           </section>
           <section>
             <h3>Run</h3>
-            <code><pre>{
-            scripts: {
-              "build:angular:example": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i api/example.openapi.yaml -g typescript-angular -o build/angular/example -c api/example.angular.config.json",
-              "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json && npm run package:angular:example",
-            }
-          }</pre></code>
+            <pre><code class="language-json">{
+  scripts: {
+    "build:angular:example": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i api/example.openapi.yaml -g typescript-angular -o build/angular/example -c api/example.angular.config.json",
+    "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json",
+  }
+}</code></pre>
           </section>
         </section>
 
