@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>GIT</title>
+    <title>OpenAPI</title>
 
     <meta name="author" content="Thomas Weinert">
 
@@ -125,6 +125,7 @@
           <section>
             <h2>About OpenAPI</h2>
             <ul>
+              <li>REST</li>
               <li>Swagger</li>
               <li>Current Version: OpenApi 3.1</li>
             </ul>
@@ -135,11 +136,50 @@
           <section>
             <h3>IDE Integration</h3>
           </section>
+          <section>
+            <h3>Tools</h3>
+            <a href="https://openapi.tools/">https://openapi.tools/</a>
+            <ul>
+              <li>IDE integration</li>
+              <li>(Graphical) editors</li>
+              <li>Validation</li>
+              <li>Code / documentation generators</li>
+              <li>Testing / mock servers</li>
+            </ul>
+          </section>
         </section>
 
         <section>
           <section>
             <h2>Example</h2>
+          </section>
+          <section>
+            <h3>Basic Information</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#1-12'></code></pre>
+          </section>
+          <section>
+            <h3>Schemas</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#94-105'></code></pre>
+          </section>
+          <section>
+            <h3>Enumerable (Definition)</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#69-76'></code></pre>
+          </section>
+          <section>
+            <h3>Enumerable (Use)</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#81-93'></code></pre>
+          </section>
+          <section>
+            <h3>Responses (Definition)</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#41-49'></code></pre>
+          </section>
+          <section>
+            <h3>Paths</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#18-24'></code></pre>
+          </section>
+          <section>
+            <h3>Paths / Responses</h3>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#24-34'></code></pre>
           </section>
         </section>
 
@@ -147,15 +187,68 @@
           <section>
             <h2>Documentation</h2>
           </section>
-
           <section>
             <h3>Redoc</h3>
+            <img
+              src="images/redoc-screenshot.png"
+              alt="A screenshot of the example specification in Redoc."/>
           </section>
         </section>
 
         <section>
           <section>
             <h2>Validation</h2>
+          </section>
+          <section>
+            <h3>Spectral</h3>
+            <pre><code class="language-shell">> test
+> spectral lint -v ./api/**/*.{openapi,swagger}.{json,yml,yaml}
+
+Found 55 rules (44 enabled)
+Linting /talks/talk-openapi/example/api/example.openapi.yaml
+No results with a severity of 'error' found!</code></pre>
+          </section>
+          <section>
+            <h3>Specification</h3>
+            <pre><code class="language-shell">> test
+> spectral lint -v ./api/**/*.{openapi,swagger}.{json,yml,yaml}
+
+Found 55 rules (44 enabled)
+Linting /talks/talk-openapi/example/api/example.openapi.yaml
+
+/talks/talk-openapi/example/api/example.openapi.yaml
+ 2:6  warning  info-contact  Info object must have "contact" object.  info
+
+✖ 1 problem (0 errors, 1 warning, 0 infos, 0 hints)</code></pre>
+          </section>
+          <section>
+            <h3>Code Style</h3>
+            <pre><code class="language-shell">> test
+> spectral lint -v ./api/**/*.{openapi,swagger}.{json,yml,yaml}
+
+Found 55 rules (44 enabled)
+Linting /talks/talk-openapi/example/api/example.openapi.yaml
+
+/talks/talk-openapi/example/api/example.openapi.yaml
+ 21:20  warning  operationIds-camel-case  operationId is not lowerCamelCase.  paths./books.get.operationId
+
+✖ 1 problem (0 errors, 1 warning, 0 infos, 0 hints)</code></pre>
+          </section>
+          <section>
+            <h3>Code Style Rule</h3>
+            <pre><code class="language-yaml">extends: spectral:oas
+rules:
+  operationIds-camel-case:
+    description: Operation IDs MUST be written in lowerCamelCase
+    message: '{{property}} is not lowerCamelCase.'
+    recommended: true
+    type: style
+    given: '$.paths.*[?( @property === ''get'' || @property === ''put'' || @property === ''post'' || @property === ''delete'' || @property === ''options'' || @property === ''head'' || @property === ''patch'' || @property === ''trace'' )]'
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: '^([a-z][A-Za-z0-9]*)+$'</code></pre>
           </section>
         </section>
 
@@ -247,7 +340,7 @@
         },
 
         badges: {
-          languages : false
+          languages : true
         },
 
         presenter: {
@@ -255,7 +348,7 @@
         },
 
         sampler: {
-          proxyURL: document.location.href.match(/http:\/\/localhost/) ? 'task.php?file=' : '',
+          // proxyURL: document.location.href.match(/http:\/\/localhost/) ? 'task.php?file=' : '',
           removeIndentation: true,
           lineNumbers: 'original'
         }

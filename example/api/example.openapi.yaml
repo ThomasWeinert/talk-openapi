@@ -3,11 +3,13 @@ info:
   title: Example API
   version: 1.0.0
   contact:
-    name: dimensional
-    url: https://www.dimensional.de
-    email: info@dimensional.de
+    name: Thomas Weinert
+    url: https://thomas.weinert.info
+    email: thomas@weinert.info
   description: >
     Example project for the OpenAPI talk
+    
+    You can use Markdown in the descriptions.
 servers:
   - url: 'https://example.tld/ingest/v1'
 tags:
@@ -30,6 +32,10 @@ paths:
                   $ref: '#/components/schemas/Book'
         '400':
           $ref: '#/components/responses/BadRequestError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
 components:
   responses:
     BadRequestError:
@@ -97,3 +103,6 @@ components:
       required:
         - id
         - title
+      example:
+        id: example-book-id-1
+        title: A nice book
