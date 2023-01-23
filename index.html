@@ -236,6 +236,7 @@ Linting /talks/talk-openapi/example/api/example.openapi.yaml
           </section>
           <section>
             <h3>Code Style Rule</h3>
+            <code>.spectral.yaml</code>
             <pre><code class="language-yaml">extends: spectral:oas
 rules:
   operationIds-camel-case:
@@ -257,13 +258,27 @@ rules:
             <h2>Code Generator</h2>
           </section>
           <section>
-            <h2>OpenApi Generator</h2>
+            <h3>OpenApi Generator</h3>
             <ul>
               <li>Java</li>
               <li>API clients</li>
               <li>Server stubs</li>
               <li>Documentation generators</li>
             </ul>
+          </section>
+          <section>
+            <h3>Configure</h3>
+            <code>example.angular.config.json</code>
+            <pre><code class="language-json" data-sample="example/api/example.angular.config.json"></code></pre>
+          </section>
+          <section>
+            <h3>Run</h3>
+            <code><pre>{
+            scripts: {
+              "build:angular:example": "java -jar tools/openapi-generator-cli-6.0.1.jar generate -i api/example.openapi.yaml -g typescript-angular -o build/angular/example -c api/example.angular.config.json",
+              "compile:angular:example": "ng-packagr -p build/angular/example/ng-package.json && npm run package:angular:example",
+            }
+          }</pre></code>
           </section>
         </section>
 
