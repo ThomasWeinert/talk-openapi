@@ -74,6 +74,10 @@
         padding: 0;
         box-shadow: none;
       }
+      .reveal section .row {
+        display: flex;
+        gap: 20px;
+      }
     </style>
   </head>
 
@@ -115,7 +119,6 @@
                 <li>Documentation</li>
                 <li>Validation</li>
                 <li>Code Generator</li>
-                <li>GitLab</li>
               </ul>
             </div>
           </section>
@@ -124,17 +127,20 @@
         <section>
           <section>
             <h2>About OpenAPI</h2>
-            <ul>
-              <li>REST</li>
-              <li>Swagger</li>
-              <li>Current Version: OpenApi 3.1</li>
-            </ul>
+            <div class="row" style="gap: 100px;">
+              <ul>
+                <li>REST</li>
+                <li>Swagger</li>
+                <li>Current Version: OpenApi 3.1</li>
+              </ul>
+              <img
+                src="images/openapis-icon.svg"
+                alt="OpenAPI logo"
+                style="width: 200px; height: 200px; background: #fff;"/>
+            </div>
           </section>
           <section>
             <h3>JSON vs YAML</h3>
-          </section>
-          <section>
-            <h3>IDE Integration</h3>
           </section>
           <section>
             <h3>Tools</h3>
@@ -290,10 +296,13 @@ rules:
                 <a href="https://www.openapis.org/">https://www.openapis.org/</a>
               </li>
               <li>
-                <a href="https://github.com/OpenAPITools/openapi-generator">https://github.com/OpenAPITools/openapi-generator</a>
+                <a href="https://redocly.com/">https://redocly.com/</a>
               </li>
               <li>
                 <a href="https://stoplight.io/open-source/spectral">https://stoplight.io/open-source/spectral</a>
+              </li>
+              <li>
+                <a href="https://github.com/OpenAPITools/openapi-generator">https://github.com/OpenAPITools/openapi-generator</a>
               </li>
             </ul>
           </section>
