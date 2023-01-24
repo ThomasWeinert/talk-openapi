@@ -59,12 +59,19 @@ var RevealPresenterKeys = window.RevealPresenterKeys || (function() {
     profile: config.presenter.profile || '_default'
   };
 
-  function applyProfile(name, used) {
+  function applyProfile(nameOrProfile, used) {
     var profile;
     used = used || {};
-    if (profiles[options.profile] && !used[name]) {
-      used[name] = true;
-      profile = profiles[name];
+    console.log(nameOrProfile, used);
+    if (typeof nameOrProfile === 'string') {
+      if (profiles[options.profile] && !used[nameOrProfile]) {
+        used[nameOrProfile] = true;
+        profile = profiles[nameOrProfile];
+      }
+    } else if (typeof nameOrProfile === 'object') {
+      profile = nameOrProfile;
+    }
+    if (profile) {
       if (typeof profile.extends === "string") {
         applyProfile(profile.extends, used);
       }
