@@ -354,7 +354,9 @@ if (AppConfiguration.isDevelopment()) {
           <section>
             <h3>Angular HTTP Interceptor</h3>
             <code>app.module.ts</code>
-            <pre><code class="language-typescript">@Injectable()
+            <pre><code class="language-typescript">import * as books from './data/books.json';
+
+@Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest&lt;any>, next: HttpHandler): Observable&lt;HttpEvent&lt;any>> {
@@ -381,6 +383,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       //...
     }
   }
+
+  function getDistricts() {
+    return ok(
+      (books as any).default
+    );
+  }
+
+  function ok(responseBody?, status = 200) {
+    console.log('Api Response', status, responseBody);
+    return of(new HttpResponse({ status, body: responseBody }));
+  }
+
 }
 export const fakeBackendProvider = {
   // use fake backend in place of Http service for backend-less development
