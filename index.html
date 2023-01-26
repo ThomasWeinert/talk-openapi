@@ -74,6 +74,15 @@
         padding: 0;
         box-shadow: none;
       }
+      .reveal section svg.inline-icon {
+        display: inline-block;
+        height: 1em;
+        width: 1em;
+        margin: 0 0.5em;
+        border: none;
+        background: transparent;
+        fill: white;
+      }
       .reveal section .row {
         display: flex;
         gap: 20px;
@@ -92,8 +101,18 @@
             <h1>OpenAPI</h1>
             <h2>Specify Communication</h2>
             <p>
-              <small>@ThomasWeinert</small><br/>
-              <small>@thw@phpc.social</small>
+              <small>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline-icon">
+                  <use href="images/icons/twitter.svg#icon"/>
+                </svg>
+                @ThomasWeinert
+              </small><br/>
+              <small>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline-icon">
+                  <use href="images/icons/mastodon.svg#icon"/>
+                </svg>
+                @thw@phpc.social
+              </small>
             </p>
           </section>
           <section>
@@ -102,7 +121,7 @@
               <ul>
                 <li><a href="http://www.dimensional.de">dimensional GmbH</a></li>
                 <li>Application Developer</li>
-                <li>PHP >= 20 years</li>
+                <li>Programming >= 20 years</li>
                 <li>XML Fanatic</li>
                 <li>Brompton Rider</li>
               </ul>
