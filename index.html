@@ -302,6 +302,71 @@ rules:
 
         <section>
           <section>
+            <h2>Mocks</h2>
+            <i>Fake it until you make it.</i>
+          </section>
+          <section>
+            <h3>Angular Application</h3>
+            <code>app.module.ts</code>
+            <pre><code class="language-typescript">const importedModules = [
+  BrowserModule,
+  BrowserAnimationsModule,
+  HttpClientModule,
+  YourApiModule.forRoot(AppConfiguration.forApi),
+  YourProjectModule,
+  AppRoutingModule
+];
+
+if (AppConfiguration.isDevelopment()) {
+  console.log('Enabling mocked services.');
+  importedModules.push(MocksModule);
+}
+
+
+@NgModule({</code></pre>
+          </section>
+          <section>
+            <h3>Angular HTTP Interceptor</h3>
+            <code>app.module.ts</code>
+            <pre><code class="language-typescript">@Injectable()
+export class FakeBackendInterceptor implements HttpInterceptor {
+
+  intercept(request: HttpRequest&lt;any>, next: HttpHandler): Observable&lt;HttpEvent&lt;any>> {
+    const { url, urlWithParams, method, headers, body } = request;
+
+    if (!url.startsWith('http://localhost/fake-api')) {
+      return next.handle(request);
+    }
+  }
+
+  return of(null)
+    .pipe(mergeMap(handleRoute))
+    .pipe(materialize())
+    .pipe(delay(200))
+    .pipe(dematerialize());
+
+
+  function handleRoute() {
+    console.log('API Request: ', method, urlWithParams);
+
+    switch (true) {
+      case url.endsWith('/books') && method === 'GET':
+        return getBooks();
+      //...
+    }
+  }
+}
+export const fakeBackendProvider = {
+  // use fake backend in place of Http service for backend-less development
+  provide: HTTP_INTERCEPTORS,
+  useClass: FakeBackendInterceptor,
+  multi: true
+};</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
             <h2>Links</h2>
             <ul>
               <li>
