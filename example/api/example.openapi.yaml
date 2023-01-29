@@ -30,6 +30,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+              examples:
+                $ref: './data/book-examples.json'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '403':
@@ -93,6 +95,7 @@ components:
         - message
     BookID:
       type: string
+      example: "book-999"
     Book:
       type: object
       properties:
@@ -100,8 +103,9 @@ components:
           $ref: '#/components/schemas/BookID'
         title:
           type: string
+          example: "Example Book Title"
       required:
         - id
         - title
-      example:
-        $ref: './data/book.json'
+
+
