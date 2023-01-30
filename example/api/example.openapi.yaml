@@ -98,7 +98,7 @@ components:
     BookID:
       type: string
       x-faker: datatype.uuid
-      example: "book-999"
+      example: "7ba208c1-36b3-472d-af9a-a0e8cffbc1f6"
     Book:
       type: object
       properties:
