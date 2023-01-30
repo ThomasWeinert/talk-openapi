@@ -197,19 +197,19 @@
           </section>
           <section>
             <h3>Schemas</h3>
-            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#96-109'></code></pre>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#98-112'></code></pre>
           </section>
           <section>
             <h3>Enumerable (Definition)</h3>
-            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#71-78'></code></pre>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#72-80'></code></pre>
           </section>
           <section>
             <h3>Enumerable (Use)</h3>
-            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#83-95'></code></pre>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#85-97'></code></pre>
           </section>
           <section>
             <h3>Responses (Definition)</h3>
-            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#43-51'></code></pre>
+            <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#43-53'></code></pre>
           </section>
           <section>
             <h3>Paths</h3>
@@ -218,10 +218,6 @@
           <section>
             <h3>Paths / Responses</h3>
             <pre><code class="language-yaml" data-sample='example/api/example.openapi.yaml#24-36'></code></pre>
-          </section>
-          <section>
-            <h3>Example Data</h3>
-            <pre><code class="language-json" data-sample='example/api/data/book-examples.json#1-7'></code></pre>
           </section>
         </section>
 
@@ -232,7 +228,7 @@
           <section>
             <h3>Redoc</h3>
             <img
-              src="images/redoc-screenshot.png"
+              src="images/screenshot-redoc.png"
               alt="A screenshot of the example specification in Redoc."/>
           </section>
         </section>
@@ -341,6 +337,14 @@ rules:
             </div>
           </section>
           <section>
+            <h3>Prism Mock Server</h3>
+            <pre><code class="language-shell">> npm install @stoplight/prism-cli --save-dev
+> prism mock -d -p 4011 api/example.openapi.yaml</code></pre>
+            <img
+              src="images/screenshot-prism.png"
+              alt="Prism console output listing the endpoints."/>
+          </section>
+          <section>
             <h3>Angular Application</h3>
             <code>app.module.ts</code>
             <pre><code class="language-typescript">const importedModules = [
@@ -411,10 +415,6 @@ export const fakeBackendProvider = {
   useClass: FakeBackendInterceptor,
   multi: true
 };</code></pre>
-          </section>
-
-          <section>
-            <h3>Prism</h3>
           </section>
         </section>
 

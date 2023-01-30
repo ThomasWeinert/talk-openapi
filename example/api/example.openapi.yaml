@@ -31,7 +31,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
               examples:
-                $ref: './data/book-examples.json'
+                List:
+                  value:
+                    $ref: './data/books.json'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '403':
@@ -95,6 +97,7 @@ components:
         - message
     BookID:
       type: string
+      x-faker: datatype.uuid
       example: "book-999"
     Book:
       type: object
