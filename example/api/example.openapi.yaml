@@ -97,8 +97,8 @@ components:
         - message
     BookID:
       type: string
-      x-faker: datatype.uuid
       example: "7ba208c1-36b3-472d-af9a-a0e8cffbc1f6"
+      x-faker: datatype.uuid
     Book:
       type: object
       properties:
@@ -107,8 +107,7 @@ components:
         title:
           type: string
           example: "Example Book Title"
+          x-faker: lorem.words
       required:
         - id
         - title
-
-
